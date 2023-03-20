@@ -4,38 +4,38 @@ trait LightStandTime {
 }
 
 #[derive(Debug)]
-enum Traffic_Lights {
+enum TrafficLights {
     Red,
     Yellow,
     Green,
 }
 
-impl LightStandTime for Traffic_Lights {
+impl LightStandTime for TrafficLights {
     fn stand_time_in_seconds(&self) -> u32 {
         return match self {
-            Traffic_Lights::Red => { 30u32 }
-            Traffic_Lights::Yellow => { 3u32 }
-            Traffic_Lights::Green => { 30u32 }
+            TrafficLights::Red => { 30u32 }
+            TrafficLights::Yellow => { 3u32 }
+            TrafficLights::Green => { 30u32 }
         };
     }
 }
 
 #[test]
 fn test_traffic_light_time() {
-    let all_lights = [Traffic_Lights::Red, Traffic_Lights::Yellow, Traffic_Lights::Green];
+    let all_lights = [TrafficLights::Red, TrafficLights::Yellow, TrafficLights::Green];
     for item in all_lights {
         println!("{:?} Stand Time: {}", item, item.stand_time_in_seconds());
     }
 }
 
-const u32Max: u32 = 0xFFFFFFFFu32;
+const U32MAX: u32 = 0xFFFFFFFFu32;
 
 /// 实现一个函数，为u32类型的整数集合求和，参数类型为 &[u32]，返回类型为Option，溢出时返回None
 fn sum(array: &[u32]) -> Option<u32> {
     let mut result = 0u32;
     for item in array {
         // 如果剩余可累加量,< 下一个累加值，则必定溢出
-        if u32Max - result < *item {
+        if U32MAX - result < *item {
             return None;
         }
         result += *item;
@@ -58,7 +58,7 @@ fn call_sum(array: &[u32]) {
 fn test_sum() {
     let to_sum_normal = [1u32, 2u32, 4u32];
     call_sum(&to_sum_normal);
-    let to_sum_overflow = [1u32, 2u32, 4u32, u32Max];
+    let to_sum_overflow = [1u32, 2u32, 4u32, U32MAX];
     call_sum(&to_sum_overflow);
 }
 
