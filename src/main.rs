@@ -1,6 +1,6 @@
 /// 为枚举交通信号灯实现一个 trait，trait里包含一个返回时间的方法，不同的灯持续的时间不同
 trait LightStandTime {
-    fn stand_time_in_seconds(&self) -> u32;
+    fn stand_time_in_seconds(&self) -> u8;
 }
 
 #[derive(Debug)]
@@ -11,11 +11,11 @@ enum TrafficLights {
 }
 
 impl LightStandTime for TrafficLights {
-    fn stand_time_in_seconds(&self) -> u32 {
+    fn stand_time_in_seconds(&self) -> u8 {
         return match self {
-            TrafficLights::Red => { 30u32 }
-            TrafficLights::Yellow => { 3u32 }
-            TrafficLights::Green => { 30u32 }
+            TrafficLights::Red => { 60u8 }
+            TrafficLights::Yellow => { 3u8 }
+            TrafficLights::Green => { 30u8 }
         };
     }
 }
