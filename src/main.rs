@@ -28,9 +28,10 @@ fn test_traffic_light_time() {
     }
 }
 
-const U32MAX: u32 = 0xFFFFFFFFu32;
 
 /// 实现一个函数，为u32类型的整数集合求和，参数类型为 &[u32]，返回类型为Option，溢出时返回None
+const U32MAX: u32 = 0xFFFFFFFFu32;
+
 fn sum(array: &[u32]) -> Option<u32> {
     let mut result = 0u32;
     for item in array {
@@ -43,8 +44,9 @@ fn sum(array: &[u32]) -> Option<u32> {
     Some(result)
 }
 
-fn call_sum(array: &[u32]) {
-    match sum(array) {
+fn call_sum(array: &[u32]) -> Option<u32> {
+    let r = sum(array);
+    match r {
         None => {
             eprintln!("求和溢出")
         }
@@ -52,14 +54,15 @@ fn call_sum(array: &[u32]) {
             println!("求和结果:{}", v)
         }
     }
+    r
 }
 
 #[test]
 fn test_sum() {
     let to_sum_normal = [1u32, 2u32, 4u32];
-    call_sum(&to_sum_normal);
+    assert_eq!(call_sum(&to_sum_normal), Some(7u32));
     let to_sum_overflow = [1u32, 2u32, 4u32, U32MAX];
-    call_sum(&to_sum_overflow);
+    assert_eq!(call_sum(&to_sum_overflow), None)
 }
 
 /// 实现一个打印图形面积的函数，它接收一个可以计算面积的类型作为参数，比如圆形，三角形，正方形，需要用到泛型和泛型约束
