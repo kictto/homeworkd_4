@@ -1,3 +1,5 @@
+use std::f32::consts::PI;
+
 /// 为枚举交通信号灯实现一个 trait，trait里包含一个返回时间的方法，不同的灯持续的时间不同
 trait LightStandTime {
     fn stand_time_in_seconds(&self) -> u8;
@@ -81,7 +83,7 @@ struct Circle {
 
 impl AreaCalculable for Circle {
     fn calculate_area(&self) -> f32 {
-        3.14 * self.radius * self.radius
+        PI * self.radius * self.radius
     }
 }
 
