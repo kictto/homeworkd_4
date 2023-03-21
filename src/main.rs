@@ -75,11 +75,11 @@ fn calculate_and_print_area<T: AreaCalculable>(shape: T) {
     println!("面积:{}", area);
 }
 
-struct Cycle {
+struct Circle {
     radius: f32,
 }
 
-impl AreaCalculable for Cycle {
+impl AreaCalculable for Circle {
     fn calculate_area(&self) -> f32 {
         3.14 * self.radius * self.radius
     }
@@ -87,7 +87,7 @@ impl AreaCalculable for Cycle {
 
 #[test]
 fn test_area_calculate() {
-    calculate_and_print_area(Cycle { radius: 2.0f32 })
+    calculate_and_print_area(Circle { radius: 2.0f32 })
 }
 
 fn main() {
