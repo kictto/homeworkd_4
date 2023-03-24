@@ -36,7 +36,7 @@ fn test_traffic_light_time() {
 fn sum(array: &[u32]) -> Option<u32> {
     let mut result = 0u32;
     for item in array {
-        // 如果剩余可累加量,< 下一个累加值，则必定溢出
+        // 如果剩余可累加量 < 下一个累加值，则必定溢出
         if u32::MAX - result < *item {
             return None;
         }
