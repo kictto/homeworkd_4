@@ -72,7 +72,7 @@ trait AreaCalculable {
 }
 
 // 计算并打印面积
-fn calculate_and_print_area<T: AreaCalculable>(shape: T) {
+fn calculate_and_print_area<T: AreaCalculable>(shape: &T) {
     let area = shape.calculate_area();
     println!("面积:{}", area);
 }
@@ -89,7 +89,7 @@ impl AreaCalculable for Circle {
 
 #[test]
 fn test_area_calculate() {
-    calculate_and_print_area(Circle { radius: 2.0f32 })
+    calculate_and_print_area(&Circle { radius: 2.0f32 })
 }
 
 fn main() {
